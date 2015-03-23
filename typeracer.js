@@ -53,7 +53,7 @@ $(document).ready(function(){
         }
     });
 
-    $('#restart').click(function(){
+    $('#retry').click(function(){
         curWordIndex = 0;
         curLetterIndex = 0;
         curWord = words[curWordIndex];
@@ -65,7 +65,7 @@ $(document).ready(function(){
         end_time = 0;
         needCorrection = false;
         nberror = 0;
-        $('#retry').hide()
+        $('#newtext').hide()
         $("#tinp").prop('disabled', false);
         $('#tsrc').html(displayText(words, curWordIndex));
         $('#res').hide();
@@ -76,7 +76,7 @@ $(document).ready(function(){
         $('#tinp').focus();
     });
 
-    $('#retry').click(function(){
+    $('#newtext').click(function(){
         text = texts[Math.floor(Math.random() * texts.length)];
         //text = texts[rangen(texts.length)];
         words = text.split(" ");
@@ -92,7 +92,7 @@ $(document).ready(function(){
         end_time = 0;
         needCorrection = false;
         nberror = 0;
-        $('#retry').hide()
+        $('#newtext').hide()
         $("#tinp").prop('disabled', false);
         $('#tsrc').html(displayText(words, curWordIndex));
         $('#res').hide();
@@ -127,7 +127,7 @@ $(document).ready(function(){
     var nb_test = 0;
     var tmpError = 0;
     var hardcoreMode = false;
-    $('#retry').hide()
+    $('#newtext').hide()
     $('#tsrc').html(displayText(words, curWordIndex));
 
     $("#tinp").on('keyup keydown', function(e){
@@ -143,7 +143,7 @@ $(document).ready(function(){
 
         // hitting escape = reset
         if(keyCode == 27) {
-            $('#restart').click();
+            $('#retry').click();
         }
 
         if(keyCode != 8) {
@@ -197,7 +197,7 @@ $(document).ready(function(){
             nb_test ++;
             $("#res").html('Accuracy: <span class="bold">' + accuracy(nberror, effective_text_length).toFixed(2) + '%</span><br>Speed: <span class="bold">' + speed(elapsed, effective_text_length, nberror).toFixed(2) + ' wpm</span>');
             $("#res").show();
-            $('#retry').show()
+            $('#newtext').show()
 
         }
 
@@ -210,7 +210,7 @@ $(document).ready(function(){
                 if(hardcoreMode) {
                     $('#message').html("You typed <span class=\"wrong\">" + buffer + "</span> for the word <span class=\"wrong\">" + curWord + "</span>");
 
-                    $('#retry').click();
+                    $('#newtext').click();
                     $('#tinp').blur();
                 }
             }
