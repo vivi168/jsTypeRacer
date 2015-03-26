@@ -1,0 +1,17 @@
+table {
+    border-collapse: collapse;
+}
+
+table.stats td {
+    text-align: left;
+}
+
+table.career, table.stats th  {
+    text-align: right;
+}
+th,td {
+    padding-right: 5px;
+}
+td {
+    border: 1px solid #DDDDDD;
+}

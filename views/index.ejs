@@ -3,15 +3,16 @@
 <head>
     <title>TypeRacer Redux</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" href="style/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+
 </head>
 <body>
 
     <div class="wrapper">
 
         <h1>TypeRacer Redux</h1>
+        <p id="welcome-p">Welcome,</p>
         <div class="message-div">
             <p id="message"></p>
         </div>
@@ -23,17 +24,19 @@
         <p id="res"></p>
         <p id="this-text"></p>
 
-        <button id="retry">Retry (Esc)</button><br>
+        <button id="retry">Retry</button><br>
         <button id="newtext">Take an other test</button><br>
 
         Hardcore: <input id="hardcore" type="checkbox"/><br>
         Dark background: <input id="bg-change" type="checkbox"/><br>
-
+        <a href="/stats">Your stats</a>
 
     </div>
+    <script src="/socket.io/socket.io.js"></script>
 
-    <script type="text/javascript" src="texts.js"></script>
-    <script type="text/javascript" src="typeracer.js"></script>
+    <script type="text/javascript" src="js/texts.js"></script>
+    <script type="text/javascript" src="js/typeracer.js"></script>
+
 
 </body>
 </html>

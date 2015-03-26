@@ -1,0 +1,53 @@
+<style>
+
+    body{
+        background-color: #FAFAFA;
+        font-size: 16px;
+    }
+    #welcome-p {
+        text-align: center;
+    }
+    .message-div {
+        height: 16px;
+    }
+    p#message {
+        margin: 0;
+    }
+    .wrapper {
+        width: 640px;
+        margin:0 auto;
+    }
+    h1 {
+        text-align: center;
+    }
+
+    #tsrc, #tinp, .wrong {
+        font-family: Consolas, monospace;
+        font-size: 25px;
+    }
+
+    #tsrc, #tinp {
+        text-align: justify;
+        color: #446666;
+    }
+
+    .wrong {
+        color: red;
+    }
+
+    #tinp {
+        width: 100%;
+    }
+
+    .current-word {
+        color: #99CC00;
+    }
+
+    .bold
+    {
+        font-weight: bold;
+    }
+
+
+
+</style>

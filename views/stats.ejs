@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TypeRacer Redux</title>
+    <link rel="icon" href="style/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="style/stats.css">
+</head>
+<body>
+<h1>Your stats</h1>
+
+
+<!--
+//
+// number of races
+//
+SELECT COUNT( * ) AS nb_race
+FROM race
+WHERE user LIKE 'snakypoutz'
+
+//
+// Best single race
+//
+SELECT MAX(wpm)FROM race WHERE user LIKE 'snakypoutz'
+
+//
+// Average of fastest 10 races
+//
+SELECT AVG( wpm ) AS avg_score
+FROM (
+SELECT wpm
+FROM race
+WHERE user LIKE 'snakypoutz'
+ORDER BY wpm DESC
+LIMIT 10
+) AS tr
+
+//
+// Fastest race from each text, average
+//
+SELECT COUNT( textid ) AS nbtext , AVG( wpm ) AS avg_score
+FROM (
+SELECT DISTINCT textid, MAX( wpm ) AS wpm
+FROM race
+WHERE user LIKE 'snakypoutz'
+GROUP BY textid
+) AS tr
+
+//
+// average career speed
+//
+SELECT AVG(wpm) FROM race WHERE user LIKE 'snakypoutz'
+
+//
+// career standard deviation
+SELECT STDDEV(wpm) FROM race WHERE user LIKE 'snakypoutz'
+
+//
+// Last 10 races
+//
+SELECT avg(wpm) as avg_score
+FROM (
+  SELECT wpm FROM race WHERE user LIKE 'snakypoutz' ORDER BY id DESC LIMIT 10
+) AS tr
+ -->
+
+
+<table class="stats">
+    <tr>
+        <th>Races</th>
+        <td></td>
+    </tr>
+    <tr>
+        <th>Best single race</th>
+        <td></td>
+    </tr>
+    <tr>
+        <th>Average of fastest 10 races</th>
+        <td></td>
+    </tr>
+    <tr>
+        <th>Fastest race from each text, average</th>
+        <td></td>
+    </tr>
+    <tr>
+        <th>Average career speed</th>
+        <td></td>
+    </tr>
+    <tr>
+        <th>Career standard deviation</th>
+        <td></td>
+    </tr>
+    <tr>
+        <th>Coefficient of variation</th>
+        <td></td>
+    </tr>
+    <tr>
+        <th>Last 10 races</th>
+        <td></td>
+    </tr>
+</table>
+<br>
+
+
+<!-- //
+//    Career fetching
+//
+SELECT
+     strftime('%Y', date),
+     strftime('%m', date),
+     Avg(wpm),
+     count(id),
+     max(wpm)
+FROM
+     race
+WHERE user like 'snakypoutz'
+GROUP BY
+     user,
+     strftime('%Y', date),
+     strftime('%m', date) -->
+
+
+<h2>Career</h2>
+<table class="career">
+<tr>
+    <th>Month</th>
+    <th>Average</th>
+    <th>Best</th>
+    <th>Races</th>
+</tr>
+<tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+</tr>
+
+</table><br>
+
+<a href="/">Back</a>
+</body>
+</html>

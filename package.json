@@ -1,0 +1,31 @@
+{
+  "name": "jsTypeRacer",
+  "version": "1.0.0",
+  "description": "Solo typeracer clone to practice your typing skill and test your speed.",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "*",
+    "method-override": "*",
+    "cookie-parser": "*",
+    "session.socket.io": "*",
+    "express": "*",
+    "express-session": "*",
+    "socket.io": "*",
+    "sqlite3": "*",
+    "node-fs": "*",
+    "ejs": "*"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vivi168/jsTypeRacer.git"
+  },
+  "author": "vivi168",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vivi168/jsTypeRacer/issues"
+  },
+  "homepage": "https://github.com/vivi168/jsTypeRacer"
+}
