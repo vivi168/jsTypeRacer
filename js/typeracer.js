@@ -25,24 +25,31 @@ function display_text(words, curword_index) {
 }
 
 $(document).ready(function(){
-    var socket = io.connect('http://192.168.0.11:1337');
-
-    user_name = prompt('username?');
 
     $.ajax({
         type: 'POST',
-        url: '/login',
-        data: {username: user_name},
+        url: '/checklogin',
         success: function(data){
-            console.log('authentication done, welcome ' + data);
+            if(!data) {
+                $.ajax({
+                    type: 'POST',
+                    url: '/login',
+                    data: {username: prompt('username?')},
+                    success: function(data){
+                        console.log('authentication done, welcome ' + data);
+                        $('#welcome-p').text('Welcome, ' + data);
+                    }
+                });
+            }
+            else {
+                console.log("you're already logged in " + data);
+                $('#welcome-p').text('Welcome, ' + data);
+            }
         }
     });
 
-    // var username = 'vivien';
-
-    $('#welcome-p').text('Welcome, ' + user_name);
-    // simple test for testing
-    // var texts= ["ain't nobody got time fo dat"];
+    // simple text for testing
+    var texts= ["ain't nobody got time fo dat"];
 
     $('#tinp').focus();
 
@@ -214,7 +221,17 @@ $(document).ready(function(){
             $('#newtext').show()
 
             // send data
-            socket.emit('saveRace', {user: user_name, wpm: speed(elapsed, effective_text_length, nberror), textid: curTextIndex});
+            $.ajax({
+                type: 'POST',
+                url: '/saverace',
+                data: {wpm: speed(elapsed, effective_text_length, nberror), textid: curTextIndex},
+                success: function(data){
+                    if(data)
+                        console.log('race saved');
+                    else
+                        console.log('race not saved');
+                }
+            });
 
         }
 
@@ -239,8 +256,4 @@ $(document).ready(function(){
         }
     });
 
-    // between here
-   // }
-   //  });
-    // and here
 });

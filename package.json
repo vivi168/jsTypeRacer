@@ -5,12 +5,9 @@
   "main": "app.js",
   "dependencies": {
     "body-parser": "*",
-    "method-override": "*",
     "cookie-parser": "*",
-    "session.socket.io": "*",
     "express": "*",
     "express-session": "*",
-    "socket.io": "*",
     "sqlite3": "*",
     "node-fs": "*",
     "ejs": "*"
