@@ -13,11 +13,24 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-    res.render('index.ejs', {guest_ip: req.ip});
+  res.render('index.ejs', {guest_ip: req.ip});
 });
 
 app.get('/stats', (req, res) => {
-    res.render('stats.ejs', {guest_ip: req.ip});
+  models.Race.aggregate(
+    [{
+      $group: {
+        _id: '$user',
+        avgWpm: { $avg: '$wpm'}
+      }
+    }],
+    function (err, results) {
+      if(err) throw err;
+      console.log(results);
+      res.render('stats.ejs', {guest_ip: req.ip, stats: results});
+    }
+  );
+
 });
 
 app.post('/race', (req, res) => {
