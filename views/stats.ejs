@@ -64,13 +64,8 @@
     <script>
       var stats = <%- JSON.stringify(stats) %>;
       var guest_ip = '<%- guest_ip %>';
-      var avgWpm= 0;
-      for(var i = 0; i < stats.length; i++) {
-        if(stats[i]._id == guest_ip) {
-          avgWpm = stats[i].avgWpm;
-        }
-      }
-      console.log(avgWpm);
+
+      console.log(stats);
     </script>
   </body>
 </html>

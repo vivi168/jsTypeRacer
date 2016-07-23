@@ -18,12 +18,13 @@ app.get('/', (req, res) => {
 
 app.get('/stats', (req, res) => {
   models.Race.aggregate(
-    [{
-      $group: {
+    [
+      { $match: { user: req.ip } },
+      { $group: {
         _id: '$user',
         avgWpm: { $avg: '$wpm'}
-      }
-    }],
+      }}
+    ],
     function (err, results) {
       if(err) throw err;
       console.log(results);
