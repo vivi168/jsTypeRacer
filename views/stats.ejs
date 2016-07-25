@@ -15,7 +15,7 @@
       </tr>
       <tr>
         <th>Best single race</th>
-        <td></td>
+        <td><%= stats.maxWpm[0].res %></td>
       </tr>
       <tr>
         <th>Average of fastest 10 races</th>
@@ -27,7 +27,7 @@
       </tr>
       <tr>
         <th>Average career speed</th>
-        <td></td>
+        <td><%= stats.avgWpm[0].res %></td>
       </tr>
       <tr>
         <th>Career standard deviation</th>
@@ -62,10 +62,7 @@
     <a href="/">Back</a>
 
     <script>
-      var stats = <%- JSON.stringify(stats) %>;
       var guest_ip = '<%- guest_ip %>';
-
-      console.log(stats);
     </script>
   </body>
 </html>

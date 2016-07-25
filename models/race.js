@@ -13,7 +13,7 @@ raceSchema.statics.avgWpm = function(name, cb) {
     { $match: { user: name } },
     { $group: {
       _id: '$user',
-      avgWpm: { $avg: '$wpm'}
+      res: { $avg: '$wpm'}
     }}],
     cb
   );
@@ -24,7 +24,7 @@ raceSchema.statics.maxWpm = function(name, cb) {
     { $match: { user: name } },
     { $group: {
       _id: '$user',
-      maxWpm: { $max: '$wpm'}
+      res: { $max: '$wpm'}
     }}],
     cb
   );

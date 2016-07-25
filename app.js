@@ -19,10 +19,21 @@ app.get('/', (req, res) => {
 });
 
 app.get('/stats', (req, res) => {
-  models.Race.avgWpm(req.ip, (err, results) => {
-    if(err) throw err;
-    console.log(results);
-    res.render('stats.ejs', {guest_ip: req.ip, stats: results});
+  async.parallel({
+    avgWpm: (cb) => {
+      models.Race.avgWpm(req.ip, cb);
+    },
+    maxWpm: (cb) => {
+      models.Race.maxWpm(req.ip, cb);
+    }
+  },
+  (err, results) => {
+    if(err) {
+      console.log(err);
+    } else {
+      console.log(results);
+      res.render('stats.ejs', {guest_ip: req.ip, stats: results});
+    }
   });
 
 });
