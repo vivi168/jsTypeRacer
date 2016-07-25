@@ -2,6 +2,8 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/jsTypeRacer');
 var models = require('./models');
 
+var async = require('async');
+
 var express = require('express');
 var bodyParser= require('body-parser');
 var app = express();
