@@ -19,29 +19,22 @@ app.get('/', (req, res) => {
 });
 
 app.get('/stats', (req, res) => {
-  models.Race.aggregate(
-    [
-      { $match: { user: req.ip } },
-      { $group: {
-        _id: '$user',
-        avgWpm: { $avg: '$wpm'}
-      }}
-    ],
-    function (err, results) {
-      if(err) throw err;
-      console.log(results);
-      res.render('stats.ejs', {guest_ip: req.ip, stats: results});
-    }
-  );
+  models.Race.avgWpm(req.ip, (err, results) => {
+    if(err) throw err;
+    console.log(results);
+    res.render('stats.ejs', {guest_ip: req.ip, stats: results});
+  });
 
 });
 
 app.post('/race', (req, res) => {
-  console.log(req.body);
   var race = new models.Race(req.body);
   race.save((err) => {
-    if(err) throw err;
-    res.json({status:"race saved"});
+    if(err) {
+      res.send(err);
+    } else {
+      res.send('race saved');
+    }
   });
 });
 
