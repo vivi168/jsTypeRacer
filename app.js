@@ -15,7 +15,13 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-  res.render('index.ejs', {guest_ip: req.ip});
+  models.Text.findOneRandom((err, result) => {
+    if(err) {
+      console.log(err)
+    } else {
+      res.render('index.ejs', {guest_ip: req.ip, text: result});
+    }
+  });
 });
 
 app.get('/stats', (req, res) => {
@@ -34,7 +40,6 @@ app.get('/stats', (req, res) => {
     if(err) {
       console.log(err);
     } else {
-      console.log(results);
       res.render('stats.ejs', {guest_ip: req.ip, stats: results});
     }
   });

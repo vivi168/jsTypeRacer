@@ -24,10 +24,9 @@ function display_text(words, curword_index) {
   return text;
 }
 
-$(document).ready(function(){
-  console.log(guest_ip);
-  // simple text for testing
-  // var texts= ["ain't nobody got time fo dat"];
+$(document).ready(function() {
+  // replace text simpler one for testing
+  // text = "ain't nobody got time fo dat";
 
   $('#tinp').focus();
 
@@ -35,8 +34,7 @@ $(document).ready(function(){
     if(this.checked) {
       $('body').css('background-color', '#272727');
       $('body').css('color', '#EAEAEA');
-    }
-    else {
+    } else {
       $('body').css('background-color', '#FAFAFA');
       $('body').css('color', 'black');
     }
@@ -47,14 +45,13 @@ $(document).ready(function(){
       hardcore_mode = true;
       $("#message").html('');
       $("#message").show();
-    }
-    else {
+    } else {
       hardcore_mode = false;
       $("#message").hide();
     }
   });
 
-  $('#retry').click(function(){
+  $('#retry').click(function() {
     curword_index = 0;
     curletter_index = 0;
     curword = words[curword_index];
@@ -77,9 +74,7 @@ $(document).ready(function(){
     $('#tinp').focus();
   });
 
-  $('#newtext').click(function(){
-    text = texts[Math.floor(Math.random() * texts.length)];
-    //text = texts[rangen(texts.length)];
+  $('#newtext').click(function() {
     words = text.split(" ");
     effective_text_length = text.length;// + text.replace(/[^A-Z]/g, "").length;
     curword_index = 0;
@@ -102,17 +97,11 @@ $(document).ready(function(){
     $("#tinp").val('');
     $("#tinp").blur();
     $('#tinp').focus();
-    // console.log(curword);
   });
-
-  var curTextIndex = Math.floor(Math.random() * texts.length);
-  //var curTextIndex = rangen(texts.length);
-
-  var text = texts[curTextIndex];
 
   var words = text.split(" ");
   // Upper case letters and symbols account for 2 strokes
-  var effective_text_length = text.length + text.replace(/[^A-Z]/g, "").length + text.replace(/[a-z0-9 ]/gi, "").length;
+  var effective_text_length = text.length;// + text.replace(/[^A-Z]/g, "").length;
   var curword_index = 0;
   var curletter_index = 0;
   var curword = words[curword_index];
@@ -125,12 +114,12 @@ $(document).ready(function(){
   var need_correction = false;
   var nberror = 0;
   var average_speed = 0;
-  var nb_test = 0;
   var hardcore_mode = false;
+
   $('#newtext').hide()
   $('#tsrc').html(display_text(words, curword_index));
 
-  $("#tinp").on('keyup keydown', function(e){
+  $("#tinp").on('keyup keydown', function(e) {
 
     if(!start) {
       start_time = new Date().getTime();
@@ -152,19 +141,17 @@ $(document).ready(function(){
 
     if(keyCode == 32) {
     // space press, go to next word
-    if(buffer.replace(/\s+/g, '') == curword.replace(/\s+/g, '') && !need_correction) {
-      $("#tinp").val('');
-      $("#tinp").css({'background-color' : '#fff'});
-      buffer = "";
-      curletter_index = 0;
-      curword_index ++
-      curword = words[curword_index];
-      $('#tsrc').html(display_text(words, curword_index));
+      if(buffer.replace(/\s+/g, '') == curword.replace(/\s+/g, '') && !need_correction) {
+        $("#tinp").val('');
+        $("#tinp").css({'background-color' : '#fff'});
+        buffer = "";
+        curletter_index = 0;
+        curword_index ++
+        curword = words[curword_index];
+        $('#tsrc').html(display_text(words, curword_index));
         e.preventDefault(); // cancel adding a space to the input box
-      }
-      else if(buffer.length == 0) { // first character of a word
+      } else if(buffer.length == 0) { // first character of a word
         e.preventDefault();
-
       }
     }
 
@@ -174,24 +161,22 @@ $(document).ready(function(){
       }
       buffer = buffer.substring(0, buffer.length - 1);
       if(buffer != curword.substring(0, buffer.length)) {
-      // #99CC00 green
-      $("#tinp").css({'background-color' : '#D08383'});
+        // #99CC00 green
+        $("#tinp").css({'background-color' : '#D08383'});
+      }
+      else
+      {
+        $("#tinp").css({'background-color' : '#fff'});
+      }
     }
-    else
-    {
+
+    if(curword_index == words.length-1 && buffer.replace(/\s+/g, '') == curword.replace(/\s+/g, '')) {
+
+      $("#tinp").prop('disabled', true);
       $("#tinp").css({'background-color' : '#fff'});
-    }
-
-  }
-
-  if(curword_index == words.length-1 && buffer.replace(/\s+/g, '') == curword.replace(/\s+/g, '')) {
-
-    $("#tinp").prop('disabled', true);
-    $("#tinp").css({'background-color' : '#fff'});
-    $("#tinp").val('');
-    end_time = new Date().getTime();
-    elapsed = (end_time - start_time) /1000;
-      // console.log(elapsed);
+      $("#tinp").val('');
+      end_time = new Date().getTime();
+      elapsed = (end_time - start_time) /1000;
       average_speed += speed(elapsed, effective_text_length, nberror);
 
       $("#res").html('Accuracy: <span class="bold">' + accuracy(nberror, effective_text_length).toFixed(2) + '%</span><br>Speed: <span class="bold">' + speed(elapsed, effective_text_length, nberror).toFixed(2) + ' wpm</span>');
@@ -218,17 +203,14 @@ $(document).ready(function(){
 
         if(hardcore_mode) {
           $('#message').html("You typed <span class=\"wrong\">" + buffer + "</span> for the word <span class=\"wrong\">" + curword + "</span>");
-
           $('#newtext').click();
           $('#tinp').blur();
         }
       }
-    }
-    else
-    {
+    } else {
       $("#tinp").css({'background-color' : '#fff'});
       need_correction = false;
     }
-  });
 
+  });
 });

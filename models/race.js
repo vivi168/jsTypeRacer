@@ -5,7 +5,7 @@ var raceSchema = new Schema({
   user: String,
   wpm: Number,
   created: {type: Date, default: Date.now},
-  textId: Number
+  textId: String
 });
 
 raceSchema.statics.avgWpm = function(name, cb) {
