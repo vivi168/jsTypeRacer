@@ -43,9 +43,12 @@
         color: #99CC00;
     }
 
-    .bold
-    {
+    .bold {
         font-weight: bold;
+    }
+
+    #newtext {
+        display: none;
     }
 
 

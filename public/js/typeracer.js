@@ -63,11 +63,10 @@ $(document).ready(function() {
     end_time = 0;
     need_correction = false;
     nberror = 0;
-    $('#newtext').hide()
+    $('#newtext').hide();
     $("#tinp").prop('disabled', false);
     $('#tsrc').html(display_text(words, curword_index));
     $('#res').text('');
-    $('#this-text').hide();
     $("#tinp").css({'background-color' : '#fff'});
     $("#tinp").val('');
     $("#tinp").blur();
@@ -75,28 +74,7 @@ $(document).ready(function() {
   });
 
   $('#newtext').click(function() {
-    words = text.split(" ");
-    effective_text_length = text.length;// + text.replace(/[^A-Z]/g, "").length;
-    curword_index = 0;
-    curletter_index = 0;
-    curword = words[curword_index];
-
-    buffer = "";
-
-    start = false;
-    start_time = 0;
-    end_time = 0;
-    need_correction = false;
-    nberror = 0;
-    $('#newtext').hide()
-    $("#tinp").prop('disabled', false);
-    $('#tsrc').html(display_text(words, curword_index));
-    $('#res').text('');
-    $('#this-text').hide();
-    $("#tinp").css({'background-color' : '#fff'});
-    $("#tinp").val('');
-    $("#tinp").blur();
-    $('#tinp').focus();
+    window.location.href = '/';
   });
 
   var words = text.split(" ");
@@ -116,7 +94,6 @@ $(document).ready(function() {
   var average_speed = 0;
   var hardcore_mode = false;
 
-  $('#newtext').hide()
   $('#tsrc').html(display_text(words, curword_index));
 
   $("#tinp").on('keyup keydown', function(e) {
