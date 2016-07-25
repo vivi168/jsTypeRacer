@@ -11,11 +11,11 @@
     <table class="stats">
       <tr>
         <th>Races</th>
-        <td></td>
+        <td><%= stats.races %></td>
       </tr>
       <tr>
         <th>Best single race</th>
-        <td><%= stats.maxWpm[0].res %></td>
+        <td><%= stats.maxWpm[0].res.toFixed(2) %> wpm</td>
       </tr>
       <tr>
         <th>Average of fastest 10 races</th>
@@ -27,7 +27,7 @@
       </tr>
       <tr>
         <th>Average career speed</th>
-        <td><%= stats.avgWpm[0].res %></td>
+        <td><%= stats.avgWpm[0].res.toFixed(2) %> wpm</td>
       </tr>
       <tr>
         <th>Career standard deviation</th>

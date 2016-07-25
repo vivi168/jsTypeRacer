@@ -25,6 +25,9 @@ app.get('/stats', (req, res) => {
     },
     maxWpm: (cb) => {
       models.Race.maxWpm(req.ip, cb);
+    },
+    races: (cb) => {
+      models.Race.races(req.ip, cb);
     }
   },
   (err, results) => {
@@ -35,7 +38,6 @@ app.get('/stats', (req, res) => {
       res.render('stats.ejs', {guest_ip: req.ip, stats: results});
     }
   });
-
 });
 
 app.post('/race', (req, res) => {
