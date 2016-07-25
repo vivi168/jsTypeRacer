@@ -1,17 +1,17 @@
 table {
-    border-collapse: collapse;
+  border-collapse: collapse;
 }
 
 table.stats td {
-    text-align: left;
+  text-align: left;
 }
 
 table.career, table.stats th  {
-    text-align: right;
+  text-align: right;
 }
 th,td {
-    padding-right: 5px;
+  padding-right: 5px;
 }
 td {
-    border: 1px solid #DDDDDD;
+  border: 1px solid #DDDDDD;
 }

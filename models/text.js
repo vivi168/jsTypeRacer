@@ -22,7 +22,7 @@ Text.findOne({}, (err, doc) => {
       } else {
         var texts = JSON.parse(data);
         texts.forEach((text) => {
-          var text = new Text(text)
+          var text = new Text(text);
           text.save((err, doc) => {});
         });
       }

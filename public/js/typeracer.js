@@ -117,13 +117,13 @@ $(document).ready(function() {
     }
 
     if(keyCode == 32) {
-    // space press, go to next word
+      // space press, go to next word
       if(buffer.replace(/\s+/g, '') == curword.replace(/\s+/g, '') && !need_correction) {
         $("#tinp").val('');
         $("#tinp").css({'background-color' : '#fff'});
         buffer = "";
         curletter_index = 0;
-        curword_index ++
+        curword_index ++;
         curword = words[curword_index];
         $('#tsrc').html(display_text(words, curword_index));
         e.preventDefault(); // cancel adding a space to the input box

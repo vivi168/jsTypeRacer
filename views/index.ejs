@@ -7,38 +7,38 @@
   </head>
   <body>
 
-  <div class="wrapper">
+    <div class="wrapper">
 
-    <h1>TypeRacer Redux</h1>
-    <p id="welcome-p">Welcome, <%= guest_ip %></p>
-    <div class="message-div">
-    <p id="message"></p>
+      <h1>TypeRacer Redux</h1>
+      <p id="welcome-p">Welcome, <%= guest_ip %></p>
+      <div class="message-div">
+        <p id="message"></p>
+      </div>
+
+      <p id="tsrc"></p>
+
+      <input id="tinp" type="text"/>
+
+      <p id="res"></p>
+
+      <button id="retry">Retry</button><br>
+      <button id="newtext">Take an other test</button><br>
+
+      Hardcore: <input id="hardcore" type="checkbox"/><br>
+      Dark background: <input id="bg-change" type="checkbox"/><br>
+      <a href="/stats">Your stats</a>
+
     </div>
 
-    <p id="tsrc"></p>
-
-    <input id="tinp" type="text"/>
-
-    <p id="res"></p>
-
-    <button id="retry">Retry</button><br>
-    <button id="newtext">Take an other test</button><br>
-
-    Hardcore: <input id="hardcore" type="checkbox"/><br>
-    Dark background: <input id="bg-change" type="checkbox"/><br>
-    <a href="/stats">Your stats</a>
-
-  </div>
-
-  <script>
-    var guest_ip = '<%- guest_ip %>';
-    var text = "<%- text.text %>";
-    var curTextIndex = '<%- text._id %>';
-  </script>
+    <script>
+      var guest_ip = '<%- guest_ip %>';
+      var text = "<%- text.text %>";
+      var curTextIndex = '<%- text._id %>';
+    </script>
 
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script type="text/javascript" src="js/typeracer.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="js/typeracer.js"></script>
 
   </body>
 </html>
