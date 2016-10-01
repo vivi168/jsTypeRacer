@@ -34,12 +34,19 @@ app.get('/stats', (req, res) => {
     },
     races: (cb) => {
       models.Race.races(req.ip, cb);
+    },
+    fastest10: (cb) => {
+      models.Race.fastest10(req.ip, cb); 
+    },
+    last10: (cb) => {
+      models.Race.last10(req.ip, cb); 
     }
   },
   (err, results) => {
     if(err) {
       console.log(err);
     } else {
+      console.log(results);
       res.render('stats.ejs', {guest_ip: req.ip, stats: results});
     }
   });

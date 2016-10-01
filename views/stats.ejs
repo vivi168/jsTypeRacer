@@ -15,11 +15,23 @@
       </tr>
       <tr>
         <th>Best single race</th>
-        <td><%= stats.maxWpm[0].res.toFixed(2) %> wpm</td>
+        <td>
+          <% if(stats.maxWpm.length > 0) { %>
+            <%= stats.maxWpm[0].res.toFixed(2) %> wpm
+          <% } else { %>
+            0
+          <% } %>
+        </td>
       </tr>
       <tr>
         <th>Average of fastest 10 races</th>
-        <td></td>
+        <td>
+          <% if(stats.fastest10.length > 0) { %>
+            <%= stats.fastest10[0].res.toFixed(2) %> wpm
+          <% } else { %>
+            0
+          <% } %>
+        </td>
       </tr>
       <tr>
         <th>Fastest race from each text, average</th>
@@ -27,7 +39,13 @@
       </tr>
       <tr>
         <th>Average career speed</th>
-        <td><%= stats.avgWpm[0].res.toFixed(2) %> wpm</td>
+        <td>
+          <% if(stats.avgWpm.length > 0) { %>
+            <%= stats.avgWpm[0].res.toFixed(2) %> wpm
+          <% } else { %>
+            0
+          <% } %>
+        </td>
       </tr>
       <tr>
         <th>Career standard deviation</th>
@@ -39,7 +57,13 @@
       </tr>
       <tr>
         <th>Last 10 races</th>
-        <td></td>
+        <td>
+          <% if(stats.last10.length > 0) { %>
+            <%= stats.last10[0].res.toFixed(2) %> wpm
+          <% } else { %>
+            0
+          <% } %>
+        </td>
       </tr>
     </table><br>
 
